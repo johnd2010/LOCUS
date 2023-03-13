@@ -22,7 +22,7 @@ class TFBaseLinkPublisher():
                          (data.pose.pose.orientation.x, data.pose.pose.orientation.y, data.pose.pose.orientation.z, data.pose.pose.orientation.w),
                          time,
                          self.robot_ns + "/base_link",
-                         self.robot_ns + "/map")
+                         self.robot_ns + "/map_locus")
 
         pose = PoseStamped()
         self.path.header = data.header
