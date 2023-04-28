@@ -44,8 +44,6 @@
             <remap from="~LIDAR_TOPIC" to="$(arg pc_input)"/>
 
             <remap from="~ODOMETRY_TOPIC" to="jackal_velocity_controller/odom"/>
-            <remap from="~ODOMETRY_TOPIC" to="visual_odom" if="$(eval robot_namespace.startswith('spot'))"/>
-            <remap from="~ODOMETRY_TOPIC" to="hero/wio_ekf/odom" if="$(eval robot_namespace.startswith('husky'))"/>
 
             <remap from="~IMU_TOPIC" to="imu/data"/>            
             <remap from="~POSE_TOPIC" to="not_currently_used"/>

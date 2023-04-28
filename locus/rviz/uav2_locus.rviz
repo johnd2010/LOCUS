@@ -9,7 +9,6 @@ Panels:
         - /LOCUS_odom_path1/Shape1
         - /LOCUS_Map1
         - /PointCloud21
-        - /PointCloud22
       Splitter Ratio: 0.5
     Tree Height: 719
   - Class: rviz/Selection
@@ -141,35 +140,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.20000000298023224
       Style: Flat Squares
-      Topic: /uav2/velodyne_points
-      Unreliable: false
-      Use Fixed Frame: true
-      Use rainbow: true
-      Value: true
-    - Alpha: 1
-      Autocompute Intensity Bounds: true
-      Autocompute Value Bounds:
-        Max Value: 10
-        Min Value: -10
-        Value: true
-      Axis: Z
-      Channel Name: intensity
-      Class: rviz/PointCloud2
-      Color: 255; 255; 255
-      Color Transformer: ""
-      Decay Time: 0
-      Enabled: true
-      Invert Rainbow: false
-      Max Color: 255; 255; 255
-      Min Color: 0; 0; 0
-      Name: PointCloud2
-      Position Transformer: ""
-      Queue Size: 10
-      Selectable: true
-      Size (Pixels): 3
-      Size (m): 0.009999999776482582
-      Style: Flat Squares
-      Topic: /uav2/rgbd_velodyne_points
+      Topic: /uav2/locus_input
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -202,7 +173,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 721.881591796875
+      Distance: 144.797607421875
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -210,17 +181,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 64.5935287475586
-        Y: -84.63713836669922
-        Z: 23.553024291992188
+        X: 7.531399726867676
+        Y: -4.533210754394531
+        Z: 0.2680285573005676
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.524796485900879
+      Pitch: 1.1497968435287476
       Target Frame: <Fixed Frame>
-      Yaw: 2.026087522506714
+      Yaw: 1.176087737083435
     Saved: ~
 Window Geometry:
   Displays:

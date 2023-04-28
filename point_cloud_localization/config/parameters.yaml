@@ -3,7 +3,7 @@ localization:
   registration_method: gicp
 
   # Compute ICP covariance and condition number
-  compute_icp_covariance: true
+  compute_icp_covariance: false
   # 0: point to point 1: point to plane
   icp_covariance_method: 1
 

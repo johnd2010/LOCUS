@@ -677,7 +677,7 @@ void Locus::CheckImuFrame(const ImuConstPtr& imu_msg) {
       ROS_INFO("Received imu_msg is correctly expressed in imu frame");
       b_imu_frame_is_correct_ = true;
     } else {
-      ROS_ERROR("Received imu_msg is not expressed in imu frame, but an imu to "
+      ROS_DEBUG("Received imu_msg is not expressed in imu frame, but an imu to "
                 "base_link conversion is enabled");
       return;
     }
