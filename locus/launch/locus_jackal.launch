@@ -58,8 +58,7 @@
             <param name="robot_name" value="$(arg robot_namespace)"/>
             <param name="tf_prefix" value="$(arg robot_namespace)"/>
 
-            <param name="b_integrate_interpolated_odom" value="true" if="$(eval robot_namespace.startswith('spot'))"/>
-            <param name="b_integrate_interpolated_odom" value="false" unless="$(eval robot_namespace.startswith('spot'))"/>
+            <param name="b_integrate_interpolated_odom" value="true" if="$(eval robot_namespace.startswith('J'))"/>
 
             <rosparam file="$(find locus)/config/lo_settings.yaml" />
 
@@ -159,16 +158,24 @@
 <!-- old way. TODO: removing after locus testing-->
 <!--node pkg="nodelet" type="nodelet" name="voxel_grid" args="load pcl/VoxelGrid $(arg nodelet_manager)" output="screen" respawn="true"-->
 
-        <node pkg="nodelet" type="nodelet" name="voxel_grid" args="load point_cloud_filter/CustomVoxelGrid $(arg nodelet_manager)" output="screen" respawn="true">
-            <remap from="~input" to="body_filter/output" />
+        
+<!-- old way. TODO: removing after locus testing-->
+<!--node pkg="nodelet" type="nodelet" name="voxel_grid" args="load pcl/VoxelGrid $(arg nodelet_manager)" output="screen" respawn="true"-->
 
+        <!-- <node pkg="nodelet" type="nodelet" name="voxel_grid" args="load point_cloud_filter/CustomVoxelGrid $(arg nodelet_manager)" output="screen" respawn="true">
+            <remap from="~input" to="body_filter/output" />
             <rosparam subst_value="true">
-            filter_field_name: y
-            filter_limit_min: -10
-            filter_limit_max: 10
-            filter_limit_negative: False
-            leaf_size: 0.2
-            output_frame: $(arg robot_namespace)/base_link
+            leaf_size: 0.01
+            output_frame: $(arg robot_namespace)/fcu
+            </rosparam>
+        </node> -->
+
+        <node pkg="nodelet" type="nodelet" name="voxel_grid" args="load pcl/VoxelGrid $(arg nodelet_manager)" output="screen" respawn="true">
+            <remap from="~input" to="body_filter/output" />
+            <rosparam>
+                filter_limit_min: -10
+                filter_limit_max: 10
+                leaf_size: 0.1
             </rosparam>
         </node>
 
@@ -179,14 +186,16 @@
             respawn="$(arg respawn)">
             <remap from="~input" to="voxel_grid/output"/>
             <remap from="~output" to="$(arg pc_input)" />
-
+            <rosparam subst_value="true">
+                num_threads: y
+            </rosparam>
            <param name="num_threads"                value="4" if="$(eval robot_namespace.startswith('husky'))" />
            <param name="num_threads"                value="1" unless="$(eval robot_namespace.startswith('husky'))" />
 
         </node>
 
-        <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_velolink" args="0 0 0 0 0 0 $(arg robot_namespace)/base_link $(arg robot_namespace)/velodyne_link" />
-        <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_velo" args="0 0 0 0 0 0 $(arg robot_namespace)/base_link $(arg robot_namespace)/velodyne" />
+        <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_velolink" args="0 0 0 0 0 0 $(arg robot_namespace)/velodyne_base_link $(arg robot_namespace)/velodyne_link" />
+        <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_velo" args="0 0 0 0 0 0 $(arg robot_namespace)/base_link $(arg robot_namespace)/velodyne" /> -->
       
     </group>
  

@@ -29,7 +29,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: LOCUS_Map
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -93,8 +93,8 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 0.7386729121208191
-        Min Value: -19.887813568115234
+        Max Value: 5.352949142456055
+        Min Value: -15.415417671203613
         Value: true
       Axis: Z
       Channel Name: intensity
@@ -202,7 +202,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 721.881591796875
+      Distance: 408.50689697265625
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -210,17 +210,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 64.5935287475586
-        Y: -84.63713836669922
-        Z: 23.553024291992188
+        X: -61.91572570800781
+        Y: 44.69676971435547
+        Z: 15.64527702331543
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.524796485900879
+      Pitch: 0.9347977042198181
       Target Frame: <Fixed Frame>
-      Yaw: 2.026087522506714
+      Yaw: 2.6660900115966797
     Saved: ~
 Window Geometry:
   Displays:

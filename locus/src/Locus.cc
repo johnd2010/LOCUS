@@ -868,7 +868,7 @@ bool Locus::GetMsgAtTime(const ros::Time& stamp,
     itrTime--;
     msg = itrTime->second;
     time_diff = stamp.toSec() - itrTime->first;
-    ROS_WARN("itrTime points to buffer end");
+    ROS_DEBUG("itrTime points to buffer end");
   } else {
     double time1 = std::prev(itrTime, 1)->first;
     if (time2 - stamp.toSec() < stamp.toSec() - time1) {
@@ -962,7 +962,7 @@ bool Locus::IntegrateInterpolatedOdom(const ros::Time& stamp) {
     latest_odom_stamp = latest_odom_stamp_;
     if ((ros::Time::now() - wait_for_transform_start_time).toSec() >
         wait_for_odom_transform_timeout_) {
-      ROS_WARN("latest_odom_stamp < stamp");
+      ROS_DEBUG("latest_odom_stamp < stamp");
       break;
     }
     ros::Duration(0.01).sleep();
@@ -1003,7 +1003,7 @@ bool Locus::IntegrateInterpolatedOdom(const ros::Time& stamp) {
     tf::quaternionMsgToTF(t.transform.rotation, tf_quaternion_);
   } else {
     // Don't have a valid tf so do pure LO
-    ROS_INFO("IntegrateInterpolatedOdom - Initializing with identity pose");
+    ROS_DEBUG("IntegrateInterpolatedOdom - Initializing with identity pose");
     tf_translation_ = tf::Vector3(0.0, 0.0, 0.0);
     tf_quaternion_ = tf::Quaternion(0.0, 0.0, 0.0, 1.0);
   }

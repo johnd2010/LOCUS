@@ -1,0 +1,15 @@
+<launch>
+  <arg name="robot_namespace" default="J1"/>
+    <node pkg="nodelet" type="nodelet" args="manager"
+        name="record_player_manager" output="screen"/>
+  <arg name="cloud_input_ns" value="/$(arg robot_namespace)/rgbd_down"/>
+  
+  <node pkg="nodelet" type="nodelet" name="cloudify"
+        args="load depth_image_proc/point_cloud_xyzrgb record_player_manager --no-bond">  
+    <remap from="rgb/camera_info" to="$(arg cloud_input_ns)/color/camera_info"/>
+    <remap from="rgb/image_rect_color" to="$(arg cloud_input_ns)/color/image_raw"/>
+    <remap from="depth_registered/image_rect" to="$(arg cloud_input_ns)/aligned_depth_to_color/image_raw"/>
+    <remap from="depth_registered/points" to="/$(arg robot_namespace)/rgbd_velodyne_points"/>
+  </node>
+</launch>
+

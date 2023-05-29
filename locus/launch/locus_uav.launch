@@ -29,7 +29,7 @@
 
     <group ns="$(arg robot_namespace)">
     <node pkg="tf" type="static_transform_publisher" name="base_link_broadcaster" args="0 0 0 0 0 0 1 $(arg robot_namespace)/fcu $(arg robot_namespace)/base_link 100" if="$(eval robot_namespace.startswith('uav'))" />
-    <node pkg="tf" type="static_transform_publisher" name="velodyne_link_broadcaster" args="0 0 0 0 0 0 1 $(arg robot_namespace)/rgbd_down/link $(arg robot_namespace)/velodyne 100" if="$(arg rgbd_enabled)" />
+    <node pkg="tf" type="static_transform_publisher" name="velodyne_link_broadcaster" args="0 0 0 0 -1.57 0 1 $(arg robot_namespace)/rgbd_down/link $(arg robot_namespace)/velodyne 100" if="$(arg rgbd_enabled)" />
     <!-- <node pkg="tf" type="static_transform_publisher" name="vimu_broadcaster" args="0 0 0 0 0 0 1 $(arg robot_namespace)/fcu $(arg robot_namespace)/vn100 100" if="$(eval robot_namespace.startswith('uav'))" /> -->
     
     
@@ -70,8 +70,7 @@
             <param name="robot_name" value="$(arg robot_namespace)"/>
             <param name="tf_prefix" value="$(arg robot_namespace)"/>
 
-            <param name="b_integrate_interpolated_odom" value="true" if="$(eval robot_namespace.startswith('spot'))"/>
-            <param name="b_integrate_interpolated_odom" value="false" unless="$(eval robot_namespace.startswith('spot'))"/>
+            <param name="b_integrate_interpolated_odom" value="true" if="$(eval robot_namespace.startswith('uav'))"/>
 
             <rosparam file="$(find locus)/config/lo_settings.yaml" />
 

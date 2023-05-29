@@ -39,6 +39,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Example usage: python sub_odom_publish_tf.py husky4')
     parser.add_argument('robot_name', type=str, help='pass robot name etc')
     args, unknown = parser.parse_known_args()
-    rospy.init_node('pub_odom_tf_map')
+    rospy.init_node('pub_odom_tf_map', anonymous=True)
     tf_base_link_publisher = TFBaseLinkPublisher(args.robot_name)
     tf_base_link_publisher.run()
