@@ -28,14 +28,14 @@
     <arg name="pc_trans_in_2" default="velodyne_rear/$(arg pc_topic)/transformed"/>
 
     <group ns="$(arg robot_namespace)">
-    <node pkg="tf" type="static_transform_publisher" name="base_link_broadcaster" args="0 0 0 0 0 0 1 $(arg robot_namespace)/fcu $(arg robot_namespace)/base_link 100" if="$(eval robot_namespace.startswith('uav'))" />
+    <!-- <node pkg="tf" type="static_transform_publisher" name="base_link_broadcaster" args="0 0 0 0 0 0 1 $(arg robot_namespace)/fcu $(arg robot_namespace)/base_link 100" if="$(eval robot_namespace.startswith('uav'))" /> -->
     <node pkg="tf" type="static_transform_publisher" name="velodyne_link_broadcaster" args="0 0 0 0 -1.57 0 1 $(arg robot_namespace)/rgbd_down/link $(arg robot_namespace)/velodyne 100" if="$(arg rgbd_enabled)" />
     <!-- <node pkg="tf" type="static_transform_publisher" name="vimu_broadcaster" args="0 0 0 0 0 0 1 $(arg robot_namespace)/fcu $(arg robot_namespace)/vn100 100" if="$(eval robot_namespace.startswith('uav'))" /> -->
     
     
-    <node pkg="tf" type="static_transform_publisher" name="arch_broadcaster" args="0 0 0 0 0 0 1 $(arg robot_namespace)/fcu $(arg robot_namespace)/arch 100" if="$(eval robot_namespace.startswith('uav'))" />
+    <!-- <node pkg="tf" type="static_transform_publisher" name="arch_broadcaster" args="0 0 0 0 0 0 1 $(arg robot_namespace)/fcu $(arg robot_namespace)/arch 100" if="$(eval robot_namespace.startswith('uav'))" />
     <node pkg="tf" type="static_transform_publisher" name="vimu_broadcaster" args="0 0 0 0 0 0 1 $(arg robot_namespace)/fcu $(arg robot_namespace)/vn100 100" if="$(eval robot_namespace.startswith('uav'))" />
-    <node pkg="tf" type="static_transform_publisher" name="imu_broadcaster" args="0 0 0 0 0 0 1 $(arg robot_namespace)/fcu $(arg robot_namespace)/imu 100" if="$(eval robot_namespace.startswith('uav'))" />
+    <node pkg="tf" type="static_transform_publisher" name="imu_broadcaster" args="0 0 0 0 0 0 1 $(arg robot_namespace)/fcu $(arg robot_namespace)/imu 100" if="$(eval robot_namespace.startswith('uav'))" /> -->
 
         <!-- Load parameters -->
         <rosparam file="$(find locus)/config/body_filter_params_$(arg robot_type).yaml"
@@ -55,9 +55,9 @@
 
             <remap from="~LIDAR_TOPIC" to="$(arg pc_input)"/>
 
-            <remap from="~ODOMETRY_TOPIC" to="mavros/local_position/odom"/>
+            <remap from="~ODOMETRY_TOPIC" to="odometry/odom_main"/>
 
-            <remap from="~IMU_TOPIC" to="mavros/imu/data"/>            
+            <remap from="~IMU_TOPIC" to="odometry/imu_untilted"/>            
             <remap from="~POSE_TOPIC" to="not_currently_used"/>
 
             <remap from="~SPACE_MONITOR_TOPIC" to="localizer_space_monitor/xy_cross_section"/>

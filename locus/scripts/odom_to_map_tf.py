@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import rospy
+from re import search
 from nav_msgs.msg import Odometry
 from nav_msgs.msg import Path
 import tf_conversions
@@ -10,6 +11,10 @@ import argparse
 class TFBaseLinkPublisher():
     def __init__(self, robot_ns):
         self.robot_ns = robot_ns
+        self.baselink = "/base_link"
+        if search("uav",self.robot_ns):
+            self.baselink = "/fcu"
+
         self.sub = rospy.Subscriber("/"+robot_ns  +  "/locus/odometry" , Odometry, self.callback)
         self.path = Path()
         self.path_pub = rospy.Publisher("/"+ robot_ns  + "/path", Path, queue_size=10)
@@ -18,10 +23,11 @@ class TFBaseLinkPublisher():
         rospy.loginfo(data.pose.pose.position)
         br = TransformBroadcaster()
         time = rospy.Time.now()
+        print(self.robot_ns + self.baselink)
         br.sendTransform((data.pose.pose.position.x, data.pose.pose.position.y, data.pose.pose.position.z),
                          (data.pose.pose.orientation.x, data.pose.pose.orientation.y, data.pose.pose.orientation.z, data.pose.pose.orientation.w),
                          time,
-                         self.robot_ns + "/base_link",
+                         self.robot_ns + self.baselink,
                          self.robot_ns + "/map_locus")
 
         pose = PoseStamped()
