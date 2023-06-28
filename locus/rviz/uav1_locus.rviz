@@ -30,7 +30,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: LOCUS_Map
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -82,7 +82,7 @@ Visualization Manager:
         Alpha: 1
         Axes Length: 2
         Axes Radius: 0.20000000298023224
-        Color: 255; 255; 255
+        Color: 239; 41; 41
         Head Length: 0.30000001192092896
         Head Radius: 0.20000000298023224
         Shaft Length: 1
@@ -231,7 +231,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 132.369873046875
+      Distance: 92.61032104492188
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -247,9 +247,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.5897973775863647
+      Pitch: 0.389797568321228
       Target Frame: <Fixed Frame>
-      Yaw: 3.1261026859283447
+      Yaw: 2.9811036586761475
     Saved: ~
 Window Geometry:
   Displays:

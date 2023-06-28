@@ -71,7 +71,7 @@
             <param name="robot_name" value="$(arg robot_namespace)"/>
             <param name="tf_prefix" value="$(arg robot_namespace)"/>
 
-            <param name="b_integrate_interpolated_odom" value="true" if="$(eval robot_namespace.startswith('uav'))"/>
+            <param name="b_integrate_interpolated_odom" value="true"/>
 
             <rosparam file="$(find locus)/config/lo_settings.yaml" />
 
@@ -154,8 +154,9 @@
             <rosparam subst_value="true">
                 num_threads: y
             </rosparam>
-           <param name="num_threads"                value="4" if="$(eval robot_namespace.startswith('husky'))" />
-           <param name="num_threads"                value="1" unless="$(eval robot_namespace.startswith('husky'))" />
+           <param name="num_threads"                value="4" />  
+           <!-- Change this for real world robots -->
+           <!-- <param name="num_threads"                value="1" unless="$(eval robot_namespace.startswith('husky'))" /> -->
 
         </node>
 
