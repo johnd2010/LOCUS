@@ -23,12 +23,11 @@ class TFBaseLinkPublisher():
         rospy.loginfo(data.pose.pose.position)
         br = TransformBroadcaster()
         time = rospy.Time.now()
-        print(self.robot_ns + self.baselink)
         br.sendTransform((data.pose.pose.position.x, data.pose.pose.position.y, data.pose.pose.position.z),
-                         (data.pose.pose.orientation.x, data.pose.pose.orientation.y, data.pose.pose.orientation.z, data.pose.pose.orientation.w),
-                         time,
-                         self.robot_ns + self.baselink,
-                         self.robot_ns + "/map_locus")
+                        (data.pose.pose.orientation.x, data.pose.pose.orientation.y, data.pose.pose.orientation.z, data.pose.pose.orientation.w),
+                        time,
+                        self.robot_ns + self.baselink,
+                        self.robot_ns + "/map_locus")
 
         pose = PoseStamped()
         self.path.header = data.header

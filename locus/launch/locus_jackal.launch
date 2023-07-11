@@ -43,7 +43,7 @@
            
             <remap from="~LIDAR_TOPIC" to="$(arg pc_input)"/>
 
-            <remap from="~ODOMETRY_TOPIC" to="jackal_velocity_controller/odom"/>
+            <remap from="~ODOMETRY_TOPIC" to="odometry/local_filtered"/>
 
             <remap from="~IMU_TOPIC" to="imu/data"/>            
             <remap from="~POSE_TOPIC" to="not_currently_used"/>
@@ -58,9 +58,9 @@
             <param name="robot_name" value="$(arg robot_namespace)"/>
             <param name="tf_prefix" value="$(arg robot_namespace)"/>
 
-            <param name="b_integrate_interpolated_odom" value="true" if="$(eval robot_namespace.startswith('J'))"/>
+            <param name="b_integrate_interpolated_odom" value="true"/>
 
-            <rosparam file="$(find locus)/config/lo_settings.yaml" />
+            <rosparam file="$(find locus)/config/lo_settings_ugv.yaml" />
 
             <param name="b_pub_odom_on_timer" value="false" />
 
@@ -194,7 +194,7 @@
 
         </node>
 
-        <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_velolink" args="0 0 0 0 0 0 $(arg robot_namespace)/velodyne_base_link $(arg robot_namespace)/velodyne_link" />
+        <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_velolink" args="0 0 0 0 0 0 $(arg robot_namespace)/velodyne_base_link $(arg robot_namespace)/velodyne_link" /> -->
         <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_velo" args="0 0 0 0 0 0 $(arg robot_namespace)/base_link $(arg robot_namespace)/velodyne" /> -->
       
     </group>

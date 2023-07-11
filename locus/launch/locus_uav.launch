@@ -55,7 +55,8 @@
 
             <remap from="~LIDAR_TOPIC" to="$(arg pc_input)"/>
 
-            <remap from="~ODOMETRY_TOPIC" to="mavros/global_position/local"/>  
+            <remap from="~ODOMETRY_TOPIC" to="odometry/odom_main"/>  
+            <!-- WARNING : GPU RAY IS ON  -->
             <!-- If changing odometry topic, change the frame by using rostopic parent frame in lo_frames_uav.yaml  -->
 
             <remap from="~IMU_TOPIC" to="mavros/imu/data"/>            
@@ -150,10 +151,7 @@
             args="load point_cloud_filter/NormalComputation $(arg nodelet_manager) $(arg nodelet_args)"
             respawn="$(arg respawn)">
             <remap from="~input" to="voxel_grid/output"/>
-            <remap from="~output" to="$(arg pc_input)" />
-            <rosparam subst_value="true">
-                num_threads: y
-            </rosparam>
+            <remap from="~output" to="$(arg pc_input)" />            
            <param name="num_threads"                value="4" />  
            <!-- Change this for real world robots -->
            <!-- <param name="num_threads"                value="1" unless="$(eval robot_namespace.startswith('husky'))" /> -->
