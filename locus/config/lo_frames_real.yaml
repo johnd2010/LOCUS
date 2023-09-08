@@ -1,0 +1,9 @@
+frame_id:
+  fixed: map
+  base: base_link
+  imu: imu_link
+  bd_odometry: odom
+  artifacts_in_global: true
+
+frame_conversions: 
+  b_convert_imu_to_base_link_frame: false
